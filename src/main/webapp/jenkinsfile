@@ -5,7 +5,7 @@ pipeline {
 
         stage('Clone') {
             steps {
-                git 'https://github.com/Rakshitha1004/shopping.git'
+                echo 'Cloning Repository...'
             }
         }
 
@@ -17,7 +17,9 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'cp target/devops-webapp.war /opt/tomcat/webapps/'
+                sh '''
+                cp target/*.war /opt/tomcat/webapps/shopping.war
+                '''
             }
         }
     }
